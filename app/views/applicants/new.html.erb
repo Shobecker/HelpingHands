@@ -1,0 +1,54 @@
+<% provide(:title, 'Apply') %>
+<h1>Apply</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@applicant) do |f| %>
+    <%= render 'shared/error_messages' %>
+    
+      <%= f.label :firstName %>
+      <%= f.text_field :firstName, class: 'form-control' %>
+
+      <%= f.label :lastName %>
+      <%= f.text_field :lastName, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.label :vehicle %>
+      <%= f.text_field :vehicle, class: 'form-control' %>
+
+      <%= f.label :license %>
+      <%= f.text_field :license, class: 'form-control' %>
+
+      <%= f.label :birthday %>
+      <%= f.text_field :birthday, class: 'form-control' %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.label :bankaccount %>
+      <%= f.text_field :bankaccount, class: 'form-control' %>
+
+      <%= f.label :bankrouting %>
+      <%= f.text_field :bankrouting, class: 'form-control' %>
+
+      <%= f.label :phone %>
+      <%= f.text_field :phone, class: 'form-control' %>
+
+      <%= f.label :userName %>
+      <%= f.text_field :userName, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

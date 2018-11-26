@@ -6,8 +6,8 @@ class CreateCustomers < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :address
       t.string :creditCard
-      t.string :creditExpDate
-      t.integer :securityCode
+      t.integer :creditExpDate
+      t.string :securityCode
       t.string :phone
       t.string :userName
 

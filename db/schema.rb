@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20181126023628) do
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "pasword_digest"
+    t.string "password_digest"
   end
 
   create_table "applicants", force: :cascade do |t|
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20181126023628) do
     t.string "userName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "pasword_digest"
+    t.string "password_digest"
     t.index ["email"], name: "index_applicants_on_email", unique: true
   end
 
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20181126023628) do
     t.string "userName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "pasword_digest"
+    t.string "password_digest"
     t.index ["email"], name: "index_customers_on_email", unique: true
   end
 
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20181126023628) do
     t.string "userName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "pasword_digest"
+    t.string "password_digest"
     t.index ["email"], name: "index_workers_on_email", unique: true
   end
 
