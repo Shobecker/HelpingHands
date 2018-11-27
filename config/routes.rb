@@ -5,20 +5,42 @@ Rails.application.routes.draw do
 
   get  '/apply', to: 'applicants#new'
 
-  get  '/hire', to: 'workers#new'
+  get  '/signupworker', to: 'workers#new'
 
   get  '/createadmin', to: 'admins#new'
 
-  post '/signup',  to: 'customers#create'
+  post '/signupcustomer',  to: 'customers#create'
 
   post '/apply',  to: 'applicants#create'
 
-  post '/hire',  to: 'workers#create'
+  post '/signupworker',  to: 'workers#create'
 
   post '/createadmin',  to: 'admins#create'
 
+
   get 'static_pages/home'
 
+  resources :customers
+
+  resources :workers
+
+  resources :admins
+
+  resources :applicants
+
+
+
+
+
+
+
+
+
+
+
+
+  get  '/login',    to: 'static_pages#login'
+  get  '/application',   to: 'static_pages#application'
   get 'static_pages/login'
 
   get 'static_pages/application'
@@ -50,12 +72,4 @@ Rails.application.routes.draw do
   get 'static_pages/jobrequest'
 
   get 'static_pages/closejobs'
-
-  get  '/login',    to: 'static_pages#login'
-  get  '/application',   to: 'static_pages#application'
-
-  resources :customers
-  resources :workers
-  resources :admins
-  resources :applicants
 end

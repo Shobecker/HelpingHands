@@ -7,4 +7,22 @@ class AdminsController < ApplicationController
   def new
   	@admin = Admin.new
   end
+
+  def create
+    @admin = Admin.new(customer_params)
+    if @admin.save
+      flash[:success] = "Admin account created"
+      redirect_to @admin
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+    def customer_params
+      params.require(:admin).permit(:username, :password,
+                                   :password_confirmation)
+    end
+end
 end

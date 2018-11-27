@@ -11,7 +11,8 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-      # Handle a successful save.
+      flash[:success] = "Welcome to Helping Hands!"
+      redirect_to @customer
     else
       render 'new'
     end

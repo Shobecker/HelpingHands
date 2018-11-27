@@ -1,54 +1,54 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, 'Worker') %>
+<h1>Create Worker Profile</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@worker) do |f| %>
+    <%= render 'shared/error_messages_worker' %>
+    
       <%= f.label :firstName %>
-      <%= f.text_field :firstName %>
+      <%= f.text_field :firstName, class: 'form-control' %>
 
       <%= f.label :lastName %>
-      <%= f.text_field :lastName %>
+      <%= f.text_field :lastName, class: 'form-control' %>
 
       <%= f.label :email %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :address %>
-      <%= f.text_field :address %>
+      <%= f.text_field :address, class: 'form-control' %>
 
       <%= f.label :vehicle %>
-      <%= f.text_field :vehicle %>
+      <%= f.text_field :vehicle, class: 'form-control' %>
 
       <%= f.label :license %>
-      <%= f.text_field :license %>
+      <%= f.text_field :license, class: 'form-control' %>
 
       <%= f.label :birthday %>
-      <%= f.text_field :birthday %>
+      <%= f.text_field :birthday, class: 'form-control' %>
 
       <%= f.label :address %>
-      <%= f.text_field :address %>
+      <%= f.text_field :address, class: 'form-control' %>
 
       <%= f.label :bankaccount %>
-      <%= f.text_field :bankaccount %>
+      <%= f.text_field :bankaccount, class: 'form-control' %>
 
       <%= f.label :bankrouting %>
-      <%= f.text_field :bankrouting %>
+      <%= f.text_field :bankrouting, class: 'form-control' %>
 
       <%= f.label :phone %>
-      <%= f.text_field :phone %>
+      <%= f.text_field :phone, class: 'form-control' %>
 
       <%= f.label :userName %>
-      <%= f.text_field :userName %>
+      <%= f.text_field :userName, class: 'form-control' %>
 
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Hire", class: "btn btn-primary" %>
-      <p></p>
-      <%= f.submit "Reject", class: "btn btn-primary" %>
+      <%= f.submit "Create worker account", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

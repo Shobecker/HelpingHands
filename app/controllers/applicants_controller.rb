@@ -11,7 +11,8 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.new(applicant_params)
     if @applicant.save
-      # Handle a successful save.
+      flash[:success] = "Thank you for Applying!"
+      redirect_to @applicant
     else
       render 'new'
     end
