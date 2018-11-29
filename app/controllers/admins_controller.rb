@@ -9,7 +9,7 @@ class AdminsController < ApplicationController
   end
 
   def create
-    @admin = Admin.new(customer_params)
+    @admin = Admin.new(admin_params)
     if @admin.save
       flash[:success] = "Admin account created"
       redirect_to @admin
@@ -20,9 +20,8 @@ class AdminsController < ApplicationController
 
   private
 
-    def customer_params
+    def admin_params
       params.require(:admin).permit(:username, :password,
                                    :password_confirmation)
     end
-end
 end

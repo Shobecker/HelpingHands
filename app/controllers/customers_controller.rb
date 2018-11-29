@@ -1,5 +1,4 @@
 class CustomersController < ApplicationController
-
   def show
     @customer = Customer.find(params[:id])
   end
@@ -11,6 +10,7 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
+      log_in @customer
       flash[:success] = "Welcome to Helping Hands!"
       redirect_to @customer
     else

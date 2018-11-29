@@ -8,7 +8,7 @@ class WorkersController < ApplicationController
   end
 
   def create
-    @worker = Worker.new(applicant_params)
+    @worker = Worker.new(worker_params)
     if @worker.save
       flash[:success] = "Worker Account Created"
       redirect_to @worker
@@ -19,7 +19,7 @@ class WorkersController < ApplicationController
 
   private
 
-    def applicant_params
+    def worker_params
       params.require(:worker).permit(:firstName, :email, :userName, :password,
                                    :password_confirmation)
     end

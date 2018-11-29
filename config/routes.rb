@@ -1,22 +1,39 @@
 Rails.application.routes.draw do
+  get 'applicant_sessions/new'
+
+  get 'admin_sessions/new'
+
+  get 'worker_sessions/new'
+
+  get 'customer_sessions/new'
+
   root 'static_pages#home'
 
-  get  '/signup',  to: 'customers#new'
-
+  get  '/signupcustomer',  to: 'customers#new'
   get  '/apply', to: 'applicants#new'
-
   get  '/signupworker', to: 'workers#new'
-
-  get  '/createadmin', to: 'admins#new'
+  get  '/signupadmin', to: 'admins#new'
 
   post '/signupcustomer',  to: 'customers#create'
-
   post '/apply',  to: 'applicants#create'
-
   post '/signupworker',  to: 'workers#create'
+  post '/signupadmin',  to: 'admins#create'
 
-  post '/createadmin',  to: 'admins#create'
+  get    '/logincustomer',   to: 'customer_sessions#new'
+  post   '/logincustomer',   to: 'customer_sessions#create'
+  delete '/logoutcustomer',  to: 'customer_sessions#destroy'
 
+  get    '/loginworker',   to: 'worker_sessions#new'
+  post   '/loginworker',   to: 'worker_sessions#create'
+  delete '/logoutworker',  to: 'worker_sessions#destroy'
+
+  get    '/loginadmin',   to: 'admin_sessions#new'
+  post   '/loginadmin',   to: 'admin_sessions#create'
+  delete '/logoutadmin',  to: 'admin_sessions#destroy'
+
+  get    '/loginapplicant',   to: 'applicant_sessions#new'
+  post   '/loginapplicant',   to: 'applicant_sessions#create'
+  delete '/logout applicant',  to: 'applicant_sessions#destroy'
 
   get 'static_pages/home'
 
@@ -27,49 +44,4 @@ Rails.application.routes.draw do
   resources :admins
 
   resources :applicants
-
-
-
-
-
-
-
-
-
-
-
-
-  get  '/login',    to: 'static_pages#login'
-  get  '/application',   to: 'static_pages#application'
-  get 'static_pages/login'
-
-  get 'static_pages/application'
-
-  get 'static_pages/signup'
-
-  get 'static_pages/updateaccount'
-
-  get 'static_pages/updateworker'
-
-  get 'static_pages/userhome'
-
-  get 'static_pages/workerhome'
-
-  get 'static_pages/adminhome'
-
-  get 'static_pages/workerlogin'
-
-  get 'static_pages/adminlogin'
-
-  get 'static_pages/viewapplicants'
-
-  get 'static_pages/viewjobs'
-
-  get 'static_pages/invoice'
-
-  get 'static_pages/joblaunch'
-
-  get 'static_pages/jobrequest'
-
-  get 'static_pages/closejobs'
 end
