@@ -1,19 +1,16 @@
-<% provide(:title, "Applicant Log in") %>
-<h1>Applicant Log in</h1>
+<% provide(:title, "Applicant/Worker Log in") %>
+<h1>Applicant/Worker Log in</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:applicant_session, url: login_path) do |f| %>
+    <%= form_for(:applicant_session, url: loginapplicant_path) do |f| %>
 
       <%= f.label :userName %>
-      <%= f.email_field :userName, class: 'form-control' %>
+      <%= f.text_field :userName, class: 'form-control' %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signupapplicant_path %></p>
-  </div>
 </div>

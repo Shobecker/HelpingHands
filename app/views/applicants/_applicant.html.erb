@@ -1,0 +1,18 @@
+<li>
+  <%= link_to applicant.firstName, applicant %> | 
+  <%= link_to applicant.lastName, applicant %> | 
+  <%= link_to applicant.email, applicant %> | 
+  <%= link_to applicant.address, applicant %> | 
+  <%= link_to applicant.vehicle, applicant %> | 
+  <%= link_to applicant.license, applicant %> | 
+  <%= link_to applicant.birthday, applicant %> | 
+  <%= link_to applicant.bankaccount, applicant %> | 
+  <%= link_to applicant.bankrouting, applicant %> | 
+  <%= link_to applicant.phone, applicant %> | 
+  <%= link_to applicant.userName, applicant %> | 
+
+     <%= link_to "reject", applicant, method: :delete,
+                                  data: { confirm: "You sure you want to reject this applicant?" } %> | 
+     <%= link_to "hire", applicant, method: :hire,
+                                  data: { confirm: "You sure you want to hire this applicant?" } %> |
+</li>

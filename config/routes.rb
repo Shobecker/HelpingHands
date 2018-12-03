@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post '/apply',  to: 'applicants#create'
   post '/signupworker',  to: 'workers#create'
   post '/signupadmin',  to: 'admins#create'
+  post '/signupapplicant',  to: 'applicants#create'
 
   get    '/logincustomer',   to: 'customer_sessions#new'
   post   '/logincustomer',   to: 'customer_sessions#create'

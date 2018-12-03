@@ -1,1 +1,27 @@
-<%= @admin.username %>
+<% provide(:title, @admin.username) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="customer_info">
+      <h1>
+	Welcome, 
+  <%= @admin.username %>!
+	  </h1>
+    </section>
+  </aside>
+</div>
+
+<div class="center jumbotron">
+  <h1>
+    View all applications
+    <p></p>
+    <%= link_to "View Applicants", applicants_path, class: "btn btn-lg btn-primary" %>
+  </h1>
+</div>
+
+  
+  <h2>
+    Work with us! Apply today!
+    <p></p>
+    <%= link_to "Sign up now!", apply_path, class: "btn btn-lg btn-primary" %>
+  </h2>
+</div>

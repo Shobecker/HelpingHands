@@ -1,0 +1,10 @@
+<% provide(:title, 'All applicants') %>
+<h1>All applicants</h1>
+
+<%= will_paginate @applicant %>
+
+<ul class="applicants">
+    <%= render @applicant %>
+</ul>
+
+<%= will_paginate @applicant %>

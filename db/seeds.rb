@@ -5,3 +5,49 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Customer.create!(name:  "Example Customer",
+             email: "example@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar"
+             admin: true)
+
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  Customer.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end
+
+Worker.create!(name:  "Example Worker",
+             email: "example@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar")
+
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  Worker.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end
+
+Applicant.create!(name:  "Example Applicant",
+             email: "example@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar")
+
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  Applicant.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end

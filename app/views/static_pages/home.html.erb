@@ -6,9 +6,9 @@
   <h2>
     Need help moving?
     <p></p>
-    <button type="button">Login</button>
+    <%= link_to "Login", logincustomer_path, class: "btn btn-lg btn-primary" %>
     <p></p>
-<%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+    <%= link_to "Sign up now!", signupcustomer_path, class: "btn btn-lg btn-primary" %>
   </h2>
 </div>
 
@@ -16,6 +16,6 @@
   <h2>
     Work with us! Apply today!
     <p></p>
-    <button type="button">Apply</button>
+    <%= link_to "Sign up now!", apply_path, class: "btn btn-lg btn-primary" %>
   </h2>
 </div>

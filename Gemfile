@@ -37,6 +37,11 @@ gem 'coffee-script-source', '1.8.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'jquery-rails', '4.3.1'
+#used to make fake accounts
+gem 'faker',          '1.7.3'
+
+gem 'will_paginate',           '3.1.6'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

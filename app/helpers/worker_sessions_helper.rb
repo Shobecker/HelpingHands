@@ -12,13 +12,29 @@ module WorkerSessionsHelper
   end
 
   # Returns true if the worker is logged in, false otherwise.
-  def worker_logged_in?
+  def logged_in_worker?
     !current_worker.nil?
   end
 
-# Logs out the current user.
+# Logs out the current worker.
   def log_out_worker
     session.delete(:worker_id)
     @current_worker = nil
+  end
+
+  # Returns true if the given user is the current worker.
+  def current_worker?(worker)
+    worker == current_worker
+  end
+
+  #Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end
