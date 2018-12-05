@@ -45,10 +45,16 @@ module ApplicantSessionsHelper
     cookies.permanent[:remember_token] = applicant.remember_token
   end
 
-  # Returns the current logged-in admin (if any).
+  # Returns the current logged-in applicant (if any).
   def current_applicant
-    if session[:applicant_id]
-      @current_applicant ||= Applicant.find_by(id: session[:applicant_id])
+    if (applicant_id = session[:applicant_id])
+      @current_applicant ||= applicant.find_by(id: applicant_id)
+    elsif (applicant_id = cookies.signed[:applicant_id])
+      applicant = Applicant.find_by(id: applicant_id)
+      if applicant && applicant.authenticated?(:remember, cookies[:remember_token])
+        log_in applicant
+        @current_applicant = applicant
+      end
     end
   end
 end

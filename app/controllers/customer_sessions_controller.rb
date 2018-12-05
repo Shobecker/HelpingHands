@@ -3,14 +3,20 @@ class CustomerSessionsController < ApplicationController
   end
 
   def create
-    customer = Customer.find_by(userName: params[:customer_session][:userName].downcase)
+    customer = Customer.find_by(customerName: params[:customer_session][:customerName].downcase)
     if customer && customer.authenticate(params[:customer_session][:password])
-      # Log the customer in and redirect to the customer's show page.
-      log_in_customer customer
-      redirect_to customer
+      if customer.activated?
+        log_in customer
+        params[:session][:remember_me] == '1' ? remember(customer) : forget(customer)
+        redirect_back_or customer
+      else
+        message  = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
-      # Create an error message.
-      flash.now[:danger] = 'Invalid username/password combination' # Not quite right!
+      flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end

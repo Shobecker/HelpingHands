@@ -1,0 +1,10 @@
+<h1>Helping Hands</h1>
+
+<p>Hi <%= @applicant.firstName %>,</p>
+
+<p>
+Welcome to the Helping Hands! Click on the link below to activate your account:
+</p>
+
+<%= link_to "Activate", edit_account_activation_url(@applicant.activation_token,
+                                                    email: @applicant.email) %>

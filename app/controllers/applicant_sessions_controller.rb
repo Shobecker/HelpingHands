@@ -3,14 +3,20 @@ class ApplicantSessionsController < ApplicationController
   end
 
   def create
-    applicant = Applicant.find_by(userName: params[:applicant_session][:userName])
+    applicant = Applicant.find_by(applicantName: params[:applicant_session][:applicantName])
     if applicant && applicant.authenticate(params[:applicant_session][:password])
-      # Log the applicant in and redirect to the applicant's show page.
-      log_in_applicant applicant
-      redirect_to applicant
+      if applicant.activated?
+        log_in applicant
+        params[:session][:remember_me] == '1' ? remember(applicant) : forget(applicant)
+        redirect_back_or applicant
+      else
+        message  = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
-      # Create an error message.
-      flash.now[:danger] = 'Invalid username/password combination' # Not quite right!
+      flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end

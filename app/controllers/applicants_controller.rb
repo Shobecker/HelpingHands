@@ -19,8 +19,9 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.new(applicant_params)
     if @applicant.save
-      flash[:success] = "Applicant Account Created"
-      redirect_to @applicant
+      @applicant.send_activation_email
+      flash[:info] = "Thank you for Applying, Please check your email to activate your account."
+      redirect_to root_url
     else
       render 'new'
     end

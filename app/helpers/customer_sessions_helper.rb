@@ -45,10 +45,16 @@ module CustomerSessionsHelper
     cookies.permanent[:remember_token] = customer.remember_token
   end
 
-  # Returns the current logged-in admin (if any).
+  # Returns the current logged-in customer (if any).
   def current_customer
-    if session[:customer_id]
-      @current_customer ||= Customer.find_by(id: session[:customer_id])
+    if (customer_id = session[:customer_id])
+      @current_customer ||= customer.find_by(id: customer_id)
+    elsif (customer_id = cookies.signed[:customer_id])
+      customer = Customer.find_by(id: customer_id)
+      if customer && customer.authenticated?(:remember, cookies[:remember_token])
+        log_in customer
+        @current_customer = customer
+      end
     end
   end
 end
