@@ -8,4 +8,13 @@
 	  </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @customer.jobs.any? %>
+      <h3>Jobs (<%= @customer.jobs.count %>)</h3>
+      <ol class="jobs">
+        <%= render @jobs %>
+      </ol>
+      <%= will_paginate @jobs %>
+    <% end %>
+  </div>
 </div>

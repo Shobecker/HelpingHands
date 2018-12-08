@@ -3,7 +3,7 @@ class ApplicantSessionsController < ApplicationController
   end
 
   def create
-    applicant = Applicant.find_by(applicantName: params[:applicant_session][:applicantName])
+    applicant = Applicant.find_by(userName: params[:applicant_session][:userName])
     if applicant && applicant.authenticate(params[:applicant_session][:password])
       if applicant.activated?
         log_in applicant

@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  has_many :microposts
+  #attr_accessor :remember_token, :activation_token
   before_save   :downcase_email
   before_create :create_activation_digest
 

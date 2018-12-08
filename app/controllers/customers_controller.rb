@@ -10,6 +10,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @jobs = @customer.jobs.paginate(page: params[:page])
   end
 
   def new
@@ -56,20 +57,25 @@ class CustomersController < ApplicationController
     #end
 
     def customer_params
+      params.require(:user).permit(:fristName, :email, :userName, :password,
+                                   :password_confirmation)
+    end
+
+    def customer_params
       params.require(:customer).permit(:firstName, :email, :userName, :password,
                                    :password_confirmation)
     end
 
      # Before filters
 
-     # Confirms a logged-in customer.
-    def logged_in_customer
-      unless logged_in_customer?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to logincustomer_url
-      end
-    end
+     # Confirms a logged-in customer. (MOVED TO APPLICATION_CONTROLLER)
+    #def logged_in_customer
+      #unless logged_in_customer?
+        #store_location
+        #flash[:danger] = "Please log in."
+        #redirect_to logincustomer_url
+      #end
+    #end
 
     # Confirms the correct customer.
     def correct_customer

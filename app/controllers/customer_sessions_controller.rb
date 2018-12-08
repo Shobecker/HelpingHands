@@ -3,7 +3,7 @@ class CustomerSessionsController < ApplicationController
   end
 
   def create
-    customer = Customer.find_by(customerName: params[:customer_session][:customerName].downcase)
+    customer = Customer.find_by(userName: params[:customer_session][:userName].downcase)
     if customer && customer.authenticate(params[:customer_session][:password])
       if customer.activated?
         log_in customer
