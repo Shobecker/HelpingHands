@@ -55,7 +55,8 @@ class ApplicantsController < ApplicationController
   private
 
     def applicant_params
-      params.require(:applicant).permit(:firstName, :email, :userName, :password,
+      params.require(:applicant).permit(:firstName, :lastName, :vehicle, :license, :birthday,
+       :email, :address, :bankaccount, :bankrouting, :phone, :userName, :password,
                                    :password_confirmation)
     end
 

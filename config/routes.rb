@@ -40,8 +40,6 @@ Rails.application.routes.draw do
 
   resources :customers
 
-  resources :workers
-
   resources :admins
 
   resources :applicants

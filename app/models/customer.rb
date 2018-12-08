@@ -1,13 +1,13 @@
 class Customer < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
-  has_many :microposts
+  has_many :jobs
   #attr_accessor :remember_token, :activation_token
   before_save   :downcase_email
   before_create :create_activation_digest
 
 	before_save { self.userName = userName.downcase }
   	validates :lastName,  presence: true, length: { maximum: 50 }
- 	validates :firstName,  presence: true, length: { maximum: 50 }
+ 	  validates :firstName,  presence: true, length: { maximum: 50 }
   	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   	validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
