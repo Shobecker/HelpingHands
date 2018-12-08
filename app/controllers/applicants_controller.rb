@@ -2,7 +2,7 @@ class ApplicantsController < ApplicationController
 
   before_action :logged_in_applicant, only: [:index, :edit, :update]
   before_action :correct_applicant,   only: [:edit, :update]
-  #before_action :admin_user,     only: :destroy
+  #before_action :admin_user,    only: :destroy
 
   def index
     @applicant = Applicant.paginate(page: params[:page])
@@ -19,7 +19,7 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.new(applicant_params)
     if @applicant.save
-      @applicant.send_activation_email
+      ApplicantMailer.account_activation(@customer).deliver_now
       flash[:info] = "Thank you for Applying, Please check your email to activate your account."
       redirect_to root_url
     else
