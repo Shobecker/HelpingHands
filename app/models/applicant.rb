@@ -1,5 +1,5 @@
 class Applicant < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
 
@@ -14,11 +14,16 @@ class Applicant < ApplicationRecord
     validates :userName, presence: true, length: { maximum: 255},
     				uniqueness: true
 
-  def Customer.digest(string)
+  def Applicant.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end 
+
+  # Returns a random token.
+  def Applicant.new_token
+    SecureRandom.urlsafe_base64
+  end
 
     # Returns true if the given token matches the digest.
   def authenticated?(attribute, token)

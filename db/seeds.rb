@@ -7,28 +7,33 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Customer.create!(firstName:  "John",
-              lastName: "Doe"
+              lastName: "Doe",
               userName: "John",
              email: "example@railstutorial.org",
              password:              "foobar",
-             password_confirmation: "foobar"
-             admin:     true,
+             password_confirmation: "foobar",
              activated: true,
              activated_at: Time.zone.now)
 
 Applicant.create!(firstName:  "Jane",
-              lastName: "Doe"
+              lastName: "Doe",
               userName: "Jane",
              email: "example@railstutorial.org",
              password:              "foobar",
-             password_confirmation: "foobar"
-             admin:     true,
+             password_confirmation: "foobar",
+             activated: true,
+             activated_at: Time.zone.now)
+
+Applicant.create!(firstName:  "John",
+              lastName: "Doe",
+              userName: "John",
+             email: "example@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             worker: true, 
              activated: true,
              activated_at: Time.zone.now)
 
 Admin.create!(username: "admin",
              password:              "foobar",
-             password_confirmation: "foobar"
-             admin:     true,
-             activated: true,
-             activated_at: Time.zone.now)
+             password_confirmation: "foobar")

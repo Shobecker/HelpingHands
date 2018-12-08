@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  attr_accessor :remember_token, :activation_token, :reset_token
   has_many :microposts
   #attr_accessor :remember_token, :activation_token
   before_save   :downcase_email
@@ -27,6 +28,11 @@ class Customer < ApplicationRecord
     digest = send("#{attribute}_digest")
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  # Returns a random token.
+  def Customer.new_token
+    SecureRandom.urlsafe_base64
   end
 
   # Activates an account.
