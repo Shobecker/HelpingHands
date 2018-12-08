@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Customer.create!(name:  "Example Customer",
+Customer.create!(firstName:  "John",
+              lastName: "Doe"
+              userName: "John",
              email: "example@railstutorial.org",
              password:              "foobar",
              password_confirmation: "foobar"
@@ -14,44 +16,19 @@ Customer.create!(name:  "Example Customer",
              activated: true,
              activated_at: Time.zone.now)
 
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  Customer.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now)
-end
-
-Worker.create!(name:  "Example Worker",
+Applicant.create!(firstName:  "Jane",
+              lastName: "Doe"
+              userName: "Jane",
              email: "example@railstutorial.org",
              password:              "foobar",
-             password_confirmation: "foobar")
+             password_confirmation: "foobar"
+             admin:     true,
+             activated: true,
+             activated_at: Time.zone.now)
 
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  Worker.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password)
-end
-
-Applicant.create!(name:  "Example Applicant",
-             email: "example@railstutorial.org",
+Admin.create!(username: "admin",
              password:              "foobar",
-             password_confirmation: "foobar")
-
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  Applicant.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password)
-end
+             password_confirmation: "foobar"
+             admin:     true,
+             activated: true,
+             activated_at: Time.zone.now)
