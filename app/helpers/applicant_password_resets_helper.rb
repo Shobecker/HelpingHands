@@ -1,0 +1,2 @@
+module ApplicantPasswordResetsHelper
+end

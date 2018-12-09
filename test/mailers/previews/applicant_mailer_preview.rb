@@ -10,7 +10,9 @@ class ApplicantMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/applicant_mailer/password_reset
   def password_reset
-    ApplicantMailer.password_reset
+    applicant = Applicant.first
+    applicant.reset_token = Applicant.new_token
+    ApplicantMailer.applicant_password_reset(applicant)
   end
 
 end

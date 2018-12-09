@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'customer_password_resets/new'
+
+  get 'customer_password_resets/edit'
+
   get 'applicant_sessions/new'
 
   get 'admin_sessions/new'
@@ -50,6 +54,9 @@ Rails.application.routes.draw do
   resources :applicant_account_activations, only: [:edit]
   #resources :customer_account_activations, only: [:edit_applicant, :edit_customer]
 
-  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :customer_password_resets,     only: [:new, :create, :edit, :update]
+
+  resources :applicant_password_resets,     only: [:new, :create, :edit, :update]
+
   resources :jobs,          only: [:create, :destroy]
 end
