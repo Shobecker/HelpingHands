@@ -4,11 +4,11 @@ class CustomerSessionsController < ApplicationController
   end
 
   def create
-    customer = Customer.find_by(userName: params[:session][:userName].downcase)
-    if customer && customer.authenticate(params[:session][:password])
+    customer = Customer.find_by(userName: params[:customer_session][:userName].downcase)
+    if customer && customer.authenticate(params[:customer_session][:password])
       if customer.activated?
         log_in customer
-        params[:session][:remember_me] == '1' ? remember(customer) : forget(customer)
+        params[:customer_session][:remember_me] == '1' ? remember(customer) : forget_customer(customer)
         redirect_back_or customer
       else
         message  = "Account not activated. "

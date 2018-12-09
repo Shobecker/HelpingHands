@@ -4,11 +4,11 @@ class ApplicantSessionsController < ApplicationController
   end
 
   def create
-    applicant = Applicant.find_by(userName: params[:session][:userName].downcase)
-    if applicant && applicant.authenticate(params[:session][:password])
+    applicant = Applicant.find_by(userName: params[:applicant_session][:userName].downcase)
+    if applicant && applicant.authenticate(params[:applicant_session][:password])
       if applicant.activated?
-        log_in applicant
-        params[:session][:remember_me] == '1' ? remember(applicant) : forget(applicant)
+        log_in_applicant applicant
+        params[:applicant_session][:remember_me] == '1' ? remember(applicant) : forget_applicant(applicant)
         redirect_back_or applicant
       else
         message  = "Account not activated. "
