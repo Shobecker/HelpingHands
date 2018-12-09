@@ -1,0 +1,9 @@
+<%= form_for(@job) do |f| %>
+  <%= render 'shared/error_messages_customer', object: f.object %>
+  <div class="field">
+    <%= f.number_field :bedrooms, placeholder: "Create job...input # of bedrooms" %>
+    <%= f.text_field :fromAdress, placeholder: "Where are you moving from?" %>
+    <%= f.text_field :toAddress, placeholder: "Where are you moving to?" %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>

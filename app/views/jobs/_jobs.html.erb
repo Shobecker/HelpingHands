@@ -1,8 +1,0 @@
-<li id="job-<%= job.id %>">
-  <%= link_to gravatar_for(job.user, size: 50), job.user %>
-  <span class="user"><%= link_to job.user.name, job.user %></span>
-  <span class="content"><%= job.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(job.created_at) %> ago.
-  </span>
-</li>

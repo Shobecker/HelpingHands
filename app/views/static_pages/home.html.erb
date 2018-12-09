@@ -1,5 +1,22 @@
 <% provide(:title, "Home") %>
 
+<% if logged_in_customer? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="customer_info">
+        <%= render 'shared/customer_info' %>
+      </section>
+      <section class="job_form">
+        <%= render 'shared/job_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Job Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+
 <div class="center jumbotron">
   <h1>Welcome to Helping Hands</h1>
 
@@ -19,3 +36,5 @@
     <%= link_to "Sign up now!", apply_path, class: "btn btn-lg btn-primary" %>
   </h2>
 </div>
+
+<% end %>

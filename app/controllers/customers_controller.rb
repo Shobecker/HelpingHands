@@ -73,14 +73,6 @@ class CustomersController < ApplicationController
       #end
     #end
 
-        # Confirms a logged-in customer.
-    def logged_in_customer
-      unless logged_in_customer?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to logincustomer_url
-      end
-    end
 
     # Confirms the correct customer.
     def correct_customer

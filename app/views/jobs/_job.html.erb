@@ -1,0 +1,15 @@
+<li id="job-<%= job.id %>">
+  <span class="customer"><%= link_to job.customer.firstName, job.customer %></span>
+  <span class="content"><%= job.bedrooms %></span>
+  <span class="content"><%= job.fromAdress %></span>
+  <span class="content"><%= job.toAddress %></span>
+  <span class="content"><%= job.worker %></span>
+  <span class="content"><%= job.active %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(job.created_at) %> ago.
+  </span>
+  <%# if !current_applicant? %>
+      <%#= link_to "close job", job, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <%# end %>
+</li>

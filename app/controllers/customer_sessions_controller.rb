@@ -7,7 +7,7 @@ class CustomerSessionsController < ApplicationController
     customer = Customer.find_by(userName: params[:customer_session][:userName].downcase)
     if customer && customer.authenticate(params[:customer_session][:password])
       if customer.activated?
-        log_in customer
+        log_in_customer customer
         params[:customer_session][:remember_me] == '1' ? remember(customer) : forget_customer(customer)
         redirect_back_or customer
       else

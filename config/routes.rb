@@ -58,5 +58,5 @@ Rails.application.routes.draw do
 
   resources :applicant_password_resets,     only: [:new, :create, :edit, :update]
 
-  resources :jobs,          only: [:create, :destroy]
+  resources :jobs,          only: [:create, :destroy, :edit, :update]
 end
