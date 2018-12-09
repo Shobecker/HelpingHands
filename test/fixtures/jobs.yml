@@ -1,9 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyText
+  bedrooms: 1
+  fromAdress: MyText
+  toAddress: MyText
   customer: one
+  active: false
+  worker: MyText
 
 two:
-  content: MyText
+  bedrooms: 1
+  fromAdress: MyText
+  toAddress: MyText
   customer: two
+  active: false
+  worker: MyText
