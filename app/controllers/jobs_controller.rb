@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
 
-before_action :logged_in_customer, only: [:create]
-  
+before_action :logged_in_customer, only: [:create, :destroy, :edit]
+before_action :correct_customer,   only: :destroy, :edit
+
   def create
   	@job = current_customer.jobs.build(job_params)
     if @job.save
@@ -20,6 +21,7 @@ before_action :logged_in_customer, only: [:create]
   end
 
   def edit
+    
   end
 
   def update
@@ -28,6 +30,11 @@ before_action :logged_in_customer, only: [:create]
   private
 
    def job_params
-      params.require(:job).permit(:bedrooms, :toAddress, :fromAddress)
+      params.require(:job).permit(:bedrooms, :toAddress, :fromAdress)
    end
+
+   def correct_customer
+      @job = current_customer.jobs.find_by(id: params[:id])
+      redirect_to root_url if @job.nil?
+    end
 end
