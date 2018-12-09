@@ -6,13 +6,5 @@ class ApplicationController < ActionController::Base
   include ApplicantSessionsHelper
 
   private
-
-    # Confirms a logged-in customer.
-    def logged_in_customer
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+    
 end

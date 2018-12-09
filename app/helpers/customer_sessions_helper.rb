@@ -4,13 +4,6 @@ module CustomerSessionsHelper
     session[:customer_id] = customer.id
   end
 
-	# Returns the current logged-in customer (if any).
-  def current_customer
-    if session[:customer_id]
-      @current_customer ||= Customer.find_by(id: session[:customer_id])
-    end
-  end
-
   # Returns true if the customer is logged in, false otherwise.
   def logged_in_customer?
     !current_customer.nil?
@@ -18,6 +11,7 @@ module CustomerSessionsHelper
 
   # Logs out the current customer.
   def log_out_customer
+    current_customer && forget_customer(current_customer)
     session.delete(:customer_id)
     @current_customer = nil
   end
@@ -48,13 +42,20 @@ module CustomerSessionsHelper
   # Returns the current logged-in customer (if any).
   def current_customer
     if (customer_id = session[:customer_id])
-      @current_customer ||= customer.find_by(id: customer_id)
+      @current_customer ||= Customer.find_by(id: customer_id)
     elsif (customer_id = cookies.signed[:customer_id])
       customer = Customer.find_by(id: customer_id)
       if customer && customer.authenticated?(:remember, cookies[:remember_token])
-        log_in customer
+        log_in_customer customer
         @current_customer = customer
       end
     end
+  end
+
+  # Forgets a persistent session.
+  def forget_customer(customer)
+    #customer.forget_customer
+    cookies.delete(:customer_id)
+    cookies.delete(:remember_token)
   end
 end

@@ -26,7 +26,12 @@ class Applicant < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
-    # Returns true if the given token matches the digest.
+  def remember
+    self.remember_token = Applicant.new_token
+    update_attribute(:remember_digest, Applicant.digest(remember_token))
+  end
+  
+     # Returns true if the given token matches the digest.
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
     return false if digest.nil?
@@ -39,11 +44,11 @@ class Applicant < ApplicationRecord
     update_attribute(:activated_at, Time.zone.now)
   end
 
-  # Sends activation email.
+    # Sends activation email.
   def send_activation_email
-    UserMailer.account_activation(self).deliver_now
+    ApplicantMailer.applicant_account_activation(self).deliver_now
   end
-  
+
     private
 
     # Converts email to all lower-case.

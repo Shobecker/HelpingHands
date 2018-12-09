@@ -24,26 +24,33 @@ class Customer < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
     # Returns true if the given token matches the digest.
-  def authenticated?(attribute, token)
-    digest = send("#{attribute}_digest")
-    return false if digest.nil?
-    BCrypt::Password.new(digest).is_password?(token)
-  end
+
 
   # Returns a random token.
   def Customer.new_token
     SecureRandom.urlsafe_base64
   end
 
-  # Activates an account.
+  def remember
+    self.remember_token = Customer.new_token
+    update_attribute(:remember_digest, Customer.digest(remember_token))
+  end
+
+    def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+    # Activates an account.
   def activate
     update_attribute(:activated,    true)
     update_attribute(:activated_at, Time.zone.now)
   end
 
-  # Sends activation email.
+    # Sends activation email.
   def send_activation_email
-    UserMailer.account_activation(self).deliver_now
+    CustomerMailer.customer_account_activation(self).deliver_now
   end
   
   private
@@ -58,6 +65,4 @@ class Customer < ApplicationRecord
       self.activation_token  = Customer.new_token
       self.activation_digest = Customer.digest(activation_token)
     end
-
-
 end

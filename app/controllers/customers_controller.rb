@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
 
-  before_action :logged_in_customer, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_customer, only: [:edit, :update]
   before_action :correct_customer,   only: [:edit, :update]
   #before_action :admin_customer,     only: :destroy
   
@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-      CustomerMailer.account_activation(@customer).deliver_now
+      @customer.send_activation_email
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
     else
@@ -72,6 +72,15 @@ class CustomersController < ApplicationController
         #redirect_to logincustomer_url
       #end
     #end
+
+        # Confirms a logged-in customer.
+    def logged_in_customer
+      unless logged_in_customer?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to logincustomer_url
+      end
+    end
 
     # Confirms the correct customer.
     def correct_customer

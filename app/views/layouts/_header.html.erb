@@ -14,7 +14,7 @@
               <li><%= link_to "Settings", edit_customer_path(current_customer) %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", logoutcustomer_path, method: :delete %>
+                <%= link_to "Customer Log out", logoutcustomer_path, method: :delete %>
               </li>
             </ul>
           </li>  
@@ -29,14 +29,13 @@
               <li><%= link_to "Settings", edit_worker_path(current_worker) %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", logoutworker_path, method: :delete %>
+                <%= link_to "Worker Log out", logoutworker_path, method: :delete %>
               </li>
             </ul>
           </li>
 
           <% elsif logged_in_admin? %>
           <li><%= link_to "Admin", admins_path %></li>
-          <li><%= link_to "Worker", workers_path %></li>
           <li><%= link_to "Applicant", applicants_path %></li>
           <li><%= link_to "Customer", customers_path %></li>
           <li class="dropdown">
@@ -48,7 +47,7 @@
               <li><%= link_to "Settings", edit_admin_path(current_admin) %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", logoutadmin_path, method: :delete %>
+                <%= link_to "Admin Log out", logoutadmin_path, method: :delete %>
               </li>
             </ul>
           </li>
@@ -63,7 +62,7 @@
               <li><%= link_to "Settings", edit_applicant_path(current_applicant) %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", logoutapplicant_path, method: :delete %>
+                <%= link_to "Applicant Log out", logoutapplicant_path, method: :delete %>
               </li>
             </ul>
           </li>

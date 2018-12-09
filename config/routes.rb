@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   get    '/loginapplicant',   to: 'applicant_sessions#new'
   post   '/loginapplicant',   to: 'applicant_sessions#create'
-  delete '/logout applicant',  to: 'applicant_sessions#destroy'
+  delete '/logoutapplicant',  to: 'applicant_sessions#destroy'
 
   get 'static_pages/home'
 
@@ -44,7 +44,12 @@ Rails.application.routes.draw do
 
   resources :applicants
 
+#activates customer accounts
   resources :account_activations, only: [:edit]
+  #activiates applicant accounts
+  resources :applicant_account_activations, only: [:edit]
+  #resources :customer_account_activations, only: [:edit_applicant, :edit_customer]
+
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :jobs,          only: [:create, :destroy]
 end

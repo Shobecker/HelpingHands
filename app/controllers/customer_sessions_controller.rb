@@ -1,10 +1,11 @@
 class CustomerSessionsController < ApplicationController
+  
   def new
   end
 
   def create
-    customer = Customer.find_by(userName: params[:customer_session][:userName].downcase)
-    if customer && customer.authenticate(params[:customer_session][:password])
+    customer = Customer.find_by(email: params[:session][:email].downcase)
+    if customer && customer.authenticate(params[:session][:password])
       if customer.activated?
         log_in customer
         params[:session][:remember_me] == '1' ? remember(customer) : forget(customer)
@@ -22,7 +23,7 @@ class CustomerSessionsController < ApplicationController
   end
 
   def destroy
-    log_out_customer
+    log_out_customer if logged_in_customer?
     redirect_to root_url
   end
 end

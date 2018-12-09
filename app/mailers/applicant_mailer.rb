@@ -5,9 +5,9 @@ class ApplicantMailer < ApplicationMailer
   #
   #   en.applicant_mailer.account_activation.subject
   #
-  def account_activation(applicant)
+  def applicant_account_activation(applicant)
     @applicant = applicant
-    mail to: applicant.email, subject: "Account activation"
+    mail to: applicant.email, subject: "Helping Hands Application Account activation"
   end
 
 
@@ -16,7 +16,7 @@ class ApplicantMailer < ApplicationMailer
   #
   #   en.applicant_mailer.password_reset.subject
   #
-  def password_reset
+  def applicant_password_reset
     @greeting = "Hi"
 
     mail to: "to@example.org"

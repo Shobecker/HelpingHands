@@ -1,6 +1,6 @@
 class ApplicantsController < ApplicationController
 
-  before_action :logged_in_applicant, only: [:index, :edit, :update]
+  before_action :logged_in_applicant, only: [:edit, :update]
   before_action :correct_applicant,   only: [:edit, :update]
   #before_action :admin_user,    only: :destroy
 
@@ -19,7 +19,7 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.new(applicant_params)
     if @applicant.save
-      ApplicantMailer.account_activation(@customer).deliver_now
+      @applicant.send_activation_email
       flash[:info] = "Thank you for Applying, Please check your email to activate your account."
       redirect_to root_url
     else
@@ -49,7 +49,9 @@ class ApplicantsController < ApplicationController
   end
 
   def hire
-    @applicant.update(worker: true)
+    #need this function to change applicants worker value to true. 
+    #applicant = Applicant.find(params[:id])
+    #applicant.worker {|worker| worker.update_column(:worker, true)}
   end
 
   private
@@ -60,23 +62,28 @@ class ApplicantsController < ApplicationController
                                    :password_confirmation)
     end
 
+    # Confirms a logged-in applicant.(MOVED TO APPLICATION_CONTROLLER)
+    #def logged_in_applicant
+      #unless logged_in_applicant?
+        #store_location
+        #flash[:danger] = "Please log in."
+        #redirect_to loginapplicant_url
+      #end
+    #end
+
     # Confirms a logged-in applicant.
     def logged_in_applicant
-      unless logged_in_applicant? || 
+      unless logged_in_applicant?
         store_location
         flash[:danger] = "Please log in."
         redirect_to loginapplicant_url
       end
     end
 
-    # Confirms the correct applicant.
+    # Confirms the correct applicant. 
     def correct_applicant
      @applicant = Applicant.find(params[:id])
-      if !current_admin?(@admin)
-      redirect_to(root_url)
-      elsif !current_applicant?(@applicant)
-      redirect_to(root_url)
-      end
+      redirect_to(root_url) unless current_applicant?(@applicant)
     end
 
     # Confirms the admin

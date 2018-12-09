@@ -2,4 +2,4 @@ Hi <%= @applicant.firstName %>,
 
 Welcome to the Helping Hands and thanks you for applying! Click on the link below to activate your account:
 
-<%= edit_account_activation_url(@applicant.activation_token, email: @applicant.email) %>
+<%= edit_applicant_account_activation_url(@applicant.activation_token, email: @applicant.email) %>

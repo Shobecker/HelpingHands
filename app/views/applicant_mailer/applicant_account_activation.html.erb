@@ -6,5 +6,5 @@
 Welcome to the Helping Hands! Click on the link below to activate your account:
 </p>
 
-<%= link_to "Activate", edit_account_activation_url(@applicant.activation_token,
+<%= link_to "Activate", edit_applicant_account_activation_url(@applicant.activation_token,
                                                     email: @applicant.email) %>
