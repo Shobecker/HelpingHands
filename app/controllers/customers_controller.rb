@@ -78,9 +78,9 @@ class CustomersController < ApplicationController
     #end
 
 
-    # Confirms the correct customer.
-    #def correct_customer
-      #@customer = Customer.find(params[:id])
-      #redirect_to(root_url) unless current_customer?(@customer)
-    #end
+     #Confirms the correct customer.
+    def correct_customer
+      @customer = Customer.find(params[:id])
+      redirect_to(root_url) unless current_customer?(@customer)
+    end
 end

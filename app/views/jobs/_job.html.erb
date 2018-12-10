@@ -8,13 +8,11 @@
     <span class="content">Moving to: <%= job.toAddress %> </span>
     <span class="content">Moving on: <%= job.date %> </span>
     <span class="content"><%= job.worker %></span>
-    <span class="content"><%= job.active %></span>
 
     <span class="timestamp">
       Posted <%= time_ago_in_words(job.created_at) %> ago.
       <p>Price: $<%= job.bedrooms %>99</p>
-        <%= link_to "Confirm", job, method: :delete,
-                                       data: { confirm: "Are you sure?" } %>
+        
         <%= link_to "Reject", job, method: :delete,
                                        data: { confirm: "You sure?" } %>
     </span>
@@ -29,7 +27,6 @@
     <span class="content">Moving to: <%= job.toAddress %></span>
     <span class="content">Moving on: <%= job.date %></span>
     <span class="content"><%= job.worker %></span>
-    <span class="content"><%= job.active %></span>
 
     <span class="timestamp">
       Posted <%= time_ago_in_words(job.created_at) %> ago.
