@@ -5,7 +5,7 @@ before_action :logged_in_customer, only: :create
   
   def index
     @job  = Job.paginate(page: params[:page])
-    @feed_items = customer.feed.paginate(page: params[:page])
+    #@feed_items = customer.feed.paginate(page: params[:page])
     @jobs = Job.all
   end
 
