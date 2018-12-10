@@ -35,5 +35,5 @@ Applicant.create!(firstName:  "John",
              activated_at: Time.zone.now)
 
 Admin.create!(username: "admin",
-             password:              "foobar",
-             password_confirmation: "foobar")
+             password:              "admin",
+             password_confirmation: "admin")
