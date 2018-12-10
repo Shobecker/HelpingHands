@@ -12,8 +12,6 @@
 
     <span class="timestamp">
       Posted <%= time_ago_in_words(job.created_at) %> ago.
-  
-
     <p>Price: $<%= job.bedrooms %>99</p>
         <%= link_to "Confirm", job, method: :delete,
                                        data: { confirm: "Are you sure?" } %>
@@ -26,7 +24,7 @@
     <%#<h2>You've booked this job!</h2>
     <%# end %>
     <span class="customer"><%= link_to job.customer.firstName, job.customer %></span>
-    <span class="content"># of Bedrooms: <%= job.bedrooms %><p> bedrooms</p></span>
+    <span class="content"># of Bedrooms: <%= job.bedrooms %></span>
     <span class="content">Moving from: <%= job.fromAdress %></span>
     <span class="content">Moving to: <%= job.toAddress %></span>
     <span class="content">Moving on: <%= job.date %></span>

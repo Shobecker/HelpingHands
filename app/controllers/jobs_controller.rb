@@ -32,7 +32,6 @@ before_action :correct_customer, only: [:destroy, :edit]
   end
 
   def edit
-
   end
 
   def add_activation
