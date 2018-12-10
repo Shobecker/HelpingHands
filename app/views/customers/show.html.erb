@@ -3,8 +3,8 @@
   <aside class="col-md-4">
     <section class="customer_info">
       <h1>
-	Welcome, 
-  <%= @customer.firstName %>!
+	       Welcome, 
+         <%= @customer.firstName %>!
 	  </h1>
     <%= link_to "Start Job", root_url, class: "btn btn-lg btn-primary" %>
     </section>
@@ -12,9 +12,10 @@
   <div class="col-md-8">
     <% if @customer.jobs.any? %>
       <h3>Jobs (<%= @customer.jobs.count %>)</h3>
-      <ol class="jobs">
-        <%= render @job %>
+      <ol class="job">
+        <%= render @jobs %>
       </ol>
+      <%= will_paginate @microposts %>
     <% end %>
   </div>
 </div>

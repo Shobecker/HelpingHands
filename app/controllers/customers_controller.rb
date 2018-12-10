@@ -14,6 +14,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @jobs = @customer.jobs.paginate(page: params[:page])
   end
 
   def new
@@ -78,8 +79,8 @@ class CustomersController < ApplicationController
 
 
     # Confirms the correct customer.
-    def correct_customer
-      @customer = Customer.find(params[:id])
-      redirect_to(root_url) unless current_customer?(@customer)
-    end
+    #def correct_customer
+      #@customer = Customer.find(params[:id])
+      #redirect_to(root_url) unless current_customer?(@customer)
+    #end
 end

@@ -12,7 +12,7 @@
 
     <span class="timestamp">
       Posted <%= time_ago_in_words(job.created_at) %> ago.
-    <p>Price: $<%= job.bedrooms %>99</p>
+      <p>Price: $<%= job.bedrooms %>99</p>
         <%= link_to "Confirm", job, method: :delete,
                                        data: { confirm: "Are you sure?" } %>
         <%= link_to "Reject", job, method: :delete,

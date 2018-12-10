@@ -1,12 +1,12 @@
 class JobsController < ApplicationController
 
-before_action :logged_in_customer, only: [:create, :destroy, :edit]
-before_action :correct_customer, only: [:destroy, :edit]
+before_action :logged_in_customer, only: :create
+#before_action :correct_customer, only: [:destroy, :edit]
   
   def index
     @job  = Job.paginate(page: params[:page])
-    #@feed_items = customer.feed.paginate(page: params[:page])
-    #@jobs = Job.all
+    @feed_items = customer.feed.paginate(page: params[:page])
+    @jobs = Job.all
   end
 
   def show
