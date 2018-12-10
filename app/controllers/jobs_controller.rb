@@ -1,7 +1,18 @@
 class JobsController < ApplicationController
 
 before_action :logged_in_customer, only: [:create, :destroy, :edit]
-before_action :correct_customer,   only: :destroy, :edit
+before_action :correct_customer, only: [:destroy, :edit]
+  
+  def index
+    @job  = Job.paginate(page: params[:page])
+    #@feed_items = customer.feed.paginate(page: params[:page])
+    #@jobs = Job.all
+  end
+
+  def show
+    @job = Job.find(params[:id])
+  end
+
 
   def create
   	@job = current_customer.jobs.build(job_params)
@@ -21,16 +32,19 @@ before_action :correct_customer,   only: :destroy, :edit
   end
 
   def edit
-    
+
   end
 
-  def update
+  def add_activation
+    @job = Job.find(params[:id])
+    @job.activate = 'true'
+    save
   end
 
   private
 
    def job_params
-      params.require(:job).permit(:bedrooms, :toAddress, :fromAdress)
+      params.require(:job).permit(:bedrooms, :toAddress, :fromAdress, :date)
    end
 
    def correct_customer

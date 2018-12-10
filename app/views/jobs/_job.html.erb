@@ -1,17 +1,45 @@
 <li id="job-<%= job.id %>">
-  <span class="customer"><%= link_to job.customer.firstName, job.customer %></span>
-  <span class="content"><%= job.bedrooms %></span>
-  <span class="content"><%= job.fromAdress %></span>
-  <span class="content"><%= job.toAddress %></span>
-  <span class="content"><%= job.worker %></span>
-  <span class="content"><%= job.active %></span>
-  <p>Price: $<%= job.bedrooms %>00</p>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(job.created_at) %> ago.
-  </span>
-      <%= link_to "Confirm", job, method: :delete,
+  
+
+  <% if !job.active? && logged_in_customer?%>
+    <span class="customer"><%= link_to job.customer.firstName, job.customer %></span>
+    <span class="content"># of Bedrooms: <%= job.bedrooms %></span>
+    <span class="content">Moving from: <%= job.fromAdress %></span>
+    <span class="content">Moving to: <%= job.toAddress %> </span>
+    <span class="content">Moving on: <%= job.date %> </span>
+    <span class="content"><%= job.worker %></span>
+    <span class="content"><%= job.active %></span>
+
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(job.created_at) %> ago.
+  
+
+    <p>Price: $<%= job.bedrooms %>99</p>
+        <%= link_to "Confirm", job, method: :delete,
+                                       data: { confirm: "Are you sure?" } %>
+        <%= link_to "Reject", job, method: :delete,
                                        data: { confirm: "You sure?" } %>
-      <%= link_to "Reject", job, method: :delete,
+    </span>
+
+    <% elsif job.active? && logged_in_applicant? %>
+    <%# if (job.worker == 'janedoe') %>
+    <%#<h2>You've booked this job!</h2>
+    <%# end %>
+    <span class="customer"><%= link_to job.customer.firstName, job.customer %></span>
+    <span class="content"># of Bedrooms: <%= job.bedrooms %><p> bedrooms</p></span>
+    <span class="content">Moving from: <%= job.fromAdress %></span>
+    <span class="content">Moving to: <%= job.toAddress %></span>
+    <span class="content">Moving on: <%= job.date %></span>
+    <span class="content"><%= job.worker %></span>
+    <span class="content"><%= job.active %></span>
+
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(job.created_at) %> ago.
+      <p>Estimated Pay: $<%= job.bedrooms %>50</p>
+        <%= link_to "Take Job", job, method: :delete,
                                        data: { confirm: "You sure?" } %>
+    </span>
+  <% end %>
+
 
 </li>

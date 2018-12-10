@@ -8,6 +8,10 @@ class CustomersController < ApplicationController
     @customer = Customer.paginate(page: params[:page])
   end
 
+  def accept
+    
+  end
+
   def show
     @customer = Customer.find(params[:id])
     @jobs = @customer.jobs.paginate(page: params[:page])

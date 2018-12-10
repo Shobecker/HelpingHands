@@ -9,6 +9,11 @@ module ApplicantSessionsHelper
     !current_applicant.nil?
   end
 
+# Returns applicant username
+  def applicant_name?
+    current_applicant.userName
+  end
+
   # Logs out the current applicant.
   def log_out_applicant
     current_applicant && forget_applicant(current_applicant)

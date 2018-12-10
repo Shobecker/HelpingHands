@@ -42,6 +42,10 @@ Rails.application.routes.draw do
 
   get 'static_pages/home'
 
+  #get  '/jobs', to:'static_pages#jobs'
+
+  resources :jobs
+
   resources :customers
 
   resources :admins

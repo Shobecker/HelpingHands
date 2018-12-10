@@ -5,4 +5,5 @@ class Job < ApplicationRecord
   validates :toAddress, presence: true, length: { maximum: 140 }
   validates :fromAdress, presence: true, length: { maximum: 140 }
   validates :bedrooms, presence: true
+  validates :date, presence: true
 end

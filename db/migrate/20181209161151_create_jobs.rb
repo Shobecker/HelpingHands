@@ -5,7 +5,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.text :fromAdress
       t.text :toAddress
       t.references :customer, foreign_key: true
-      t.boolean :active
+      t.boolean :active, default: true
       t.text :worker
 
       t.timestamps
