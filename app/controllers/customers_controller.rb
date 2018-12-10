@@ -14,7 +14,6 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @jobs = @customer.jobs.paginate(page: params[:page])
   end
 
   def new
