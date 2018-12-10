@@ -1,7 +1,7 @@
 <li id="job-<%= job.id %>">
   
 
-  <% if !job.active? && logged_in_customer?%>
+  <% if logged_in_customer?%>
     <span class="customer"><%= link_to job.customer.firstName, job.customer %></span>
     <span class="content"># of Bedrooms: <%= job.bedrooms %></span>
     <span class="content">Moving from: <%= job.fromAdress %></span>
@@ -19,7 +19,7 @@
                                        data: { confirm: "You sure?" } %>
     </span>
 
-    <% elsif job.active? && logged_in_applicant? %>
+    <% elsif logged_in_applicant? %>
     <%# if (job.worker == 'janedoe') %>
     <%#<h2>You've booked this job!</h2>
     <%# end %>
